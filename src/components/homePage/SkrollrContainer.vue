@@ -6,9 +6,9 @@
           <h1>备受好评的求职利器，HR专家联名推荐</h1>
         </div>
         <div class="jl-index-startmake">
-          <a class="free-resume-btn 500dtongji" data-_track="PC-V10.0.0-首页-首页-首屏-快捷选项-立即免费制作">
+          <router-link to="/edit" class="free-resume-btn 500dtongji">
             <i></i>免费制作简历
-          </a>
+          </router-link>
         </div>
       </div>
       <ul class="index-banner-slide">
@@ -65,7 +65,7 @@ export default {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: -1;
   width: 100%;
   height: 640px;
 
