@@ -5,6 +5,7 @@ import pageSecond from '@/components/resume/pageSecond';
 import pageThird from '@/components/resume/pageThird';
 import SkrollrContainer from '@/components/homePage/SkrollrContainer';
 import Member from '@/components/member/index';
+import ModelList from '@/components/model_list/index';
 
 Vue.use(Router);
 
@@ -29,6 +30,10 @@ export default new Router({
         {
             path: '/member',
             component: Member
+        },
+        {
+            path: '/models',
+            component: ModelList
         }
     ]
 });

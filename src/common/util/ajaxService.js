@@ -11,7 +11,6 @@ function send(type, url, data) {
             data: JSON.stringify(data),
             contentType: 'application/json;charset=utf-8'
         });
-        console.log(promise);
     } else {
         promise = jquery.get(url, data);
     }

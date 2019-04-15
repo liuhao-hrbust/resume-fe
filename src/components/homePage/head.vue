@@ -4,12 +4,7 @@
       <router-link to="/"></router-link>
     </div>
     <div class="jl-touxiang" id="userHead">
-      <a
-        class="jl-tx-img 500dtongji"
-        data-_track="PC-CV6.5.0-首页-首页-顶部导航-导航栏-个人中心"
-        id="user_center"
-        href="/member/myresume/"
-      >
+      <router-link to="/member" class="jl-tx-img 500dtongji">
         <i style="display: none;"></i>
         <img
           src="http://static.500d.me/resources/500d/images/default.jpg"
@@ -18,7 +13,7 @@
           alt
         >
         <span>个人中心</span>
-      </a>
+      </router-link>
       <div class="jl-user-info">
         <ul class="user-ul-l">
           <li class="jl">
@@ -266,6 +261,7 @@ export default {
       }
 
       .jl-ej-jl-nav {
+        display: none;
         width: 130px;
         left: -42px;
         position: absolute;
