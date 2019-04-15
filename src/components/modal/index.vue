@@ -17,10 +17,9 @@ export default {
 <style>
 .modal {
     position: relative;
-    width: 100%;
-    height: 100%;
+    height: 800px;
     opacity: 0.5;
     background-color: black;
-    display: none;
+    /* display: none; */
 }
 </style>

@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import pageDefault from '@/components/resume/pageDefault';
 import pageSecond from '@/components/resume/pageSecond';
 import pageThird from '@/components/resume/pageThird';
-import homePage from '@/components/homePage/index';
+import SkrollrContainer from '@/components/homePage/SkrollrContainer';
+import Member from '@/components/member/index';
 
 Vue.use(Router);
 
@@ -11,7 +12,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: homePage
+            component: SkrollrContainer
         },
         {
             path: '/edit',
@@ -24,6 +25,10 @@ export default new Router({
         {
             path: '/eidt/three',
             component: pageThird
+        },
+        {
+            path: '/member',
+            component: Member
         }
     ]
 });

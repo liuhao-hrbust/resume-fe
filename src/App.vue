@@ -1,18 +1,20 @@
 <template>
   <div>
+      <Head></Head>
     <router-view></router-view>
     <Modal></Modal>
   </div>
 </template>
 <script>
-// import HomePage from './components/homePage/index';
+import Head from './components/homePage/head';
+import './bootstrap.css';
 import Modal from './components/modal/index';
 
 export default {
     name: 'App',
     components: {
-        // HomePage,
-        Modal
+        Modal,
+        Head
     }
 };
 </script>

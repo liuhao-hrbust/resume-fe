@@ -1,40 +1,43 @@
 <template>
   <div class="register">
-    <div class="form-group">
-      <label for="email">邮箱</label>
-      <input
-        type="email"
-        v-model="user.user_email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Email"
-        autofocus
-      >
-    </div>
-    <div class="form-group">
-      <label for="nickname">昵称</label>
-      <input
-        v-model="user.user_name"
-        type="text"
-        class="form-control"
-        id="nickname"
-        name="nickname"
-        placeholder="Nickname"
-      >
-    </div>
-    <div class="form-group">
-      <label for="password">密码</label>
-      <input
-        v-model="user.user_password"
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Password"
-      >
-    </div>
-    <button @click="handleSubmit" class="btn btn-success btn-block">注册</button>
+    <form>
+      <div class="form-group">
+        <label for="email">邮箱</label>
+        <input
+          type="email"
+          v-model="user.user_email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Email"
+          autofocus
+        >
+      </div>
+      <div class="form-group">
+        <label for="nickname">昵称</label>
+        <input
+          v-model="user.user_name"
+          type="text"
+          class="form-control"
+          id="nickname"
+          name="nickname"
+          placeholder="Nickname"
+        >
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input
+          v-model="user.user_password"
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        >
+      </div>
+      <button @click="handleSubmit" class="btn btn-success btn-block">注册</button>
+    </form>
+
     <div class="message">
       <p>
         已有账号?

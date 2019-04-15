@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import '../static/bootstrap.min.js';
 // import Vuex from 'vuex';
 
 /* eslint-disable no-unused-vars */
@@ -10,7 +11,8 @@ import common from '@/common/common.styl';
 
 /* 引入这些内容为了弹框的使用 */
 import layeyCss from '../static/layer/theme/default/layer.css';
-import jquery from '../static/jquery.js';
+// import jquery from '../static/jquery.js';
+import jquery from 'jquery';
 import layer from '../static/layer/layer.js';
 
 Vue.config.productionTip = false;

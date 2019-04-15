@@ -55,7 +55,7 @@
     <div class="jl-login">
       <a style id="login" class="jl-login-a 500dtongji" data-_track="PC-首页-首页-顶部导航-导航栏-登陆注册">登录 / 注册</a>
     </div>
-    <div class="nav">
+    <div class="jl-nav">
       <ul>
         <li>
           <router-link to="/">在线制作</router-link>
@@ -71,7 +71,7 @@
         </li>
         <li>
           <a href>···</a>
-          <div class="jl-ej-nav">
+          <div class="jl-ej-jl-nav">
             <ul>
               <li>
                 <a
@@ -127,6 +127,7 @@ export default {
 .jl-header {
   padding: 0 40px;
   font-size: 14px;
+  height: 50px;
   background: transparent;
 
   .logo {
@@ -135,7 +136,7 @@ export default {
     height: 30px;
     background: url('../../../static/image/index_sp.png') no-repeat 0 0;
     float: left;
-    margin: 18px 0 0 0;
+    margin: 9px 0 0 0;
   }
 
   .jl-touxiang {
@@ -201,7 +202,7 @@ export default {
     }
   }
 
-  .nav {
+  .jl-nav {
     float: right;
     position: relative;
     margin-right: 120px;
@@ -264,7 +265,7 @@ export default {
         font-size: 14px;
       }
 
-      .jl-ej-nav {
+      .jl-ej-jl-nav {
         width: 130px;
         left: -42px;
         position: absolute;
@@ -301,7 +302,7 @@ export default {
   }
 }
 
-.nav li a:hover {
+.jl-nav li a:hover {
   opacity: 1;
 }
 </style>
