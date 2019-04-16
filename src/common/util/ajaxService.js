@@ -6,6 +6,9 @@ function send(type, url, data) {
     let promise;
     if (type === 'POST') {
         promise = jquery.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
             url: url,
             type: 'POST',
             data: JSON.stringify(data),

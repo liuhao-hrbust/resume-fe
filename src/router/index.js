@@ -6,6 +6,7 @@ import pageThird from '@/components/resume/pageThird';
 import SkrollrContainer from '@/components/homePage/SkrollrContainer';
 import Member from '@/components/member/index';
 import ModelList from '@/components/model_list/index';
+// import Modal from '@/components/modal/index';
 
 Vue.use(Router);
 

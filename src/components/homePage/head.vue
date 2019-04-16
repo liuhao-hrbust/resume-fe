@@ -56,7 +56,7 @@
           <router-link to="/">在线制作</router-link>
         </li>
         <li>
-          <router-link to="/">模板列表</router-link>
+          <router-link to="/models">模板列表</router-link>
         </li>
         <li>
           <router-link to="/">求职行家</router-link>
@@ -98,22 +98,22 @@
 </template>
 
 <script>
-// import testService from './service';
+import testService from './service';
 
 export default {
     name: 'jl-header',
     data() {
         return {
-            user: { userName: '张三', password: '1234' }
+            user: { user_name: '1', user_password: '1' }
         };
     },
     mounted() {
-        // console.log('aaa');
-        // testService.postTest(this.user).then(data => {
-        //     console.log(data);
-        // }, err => {
-        //     console.log(err);
-        // });
+        console.log('aaa');
+        testService.postTest(this.user).then(data => {
+            console.log(data);
+        }, err => {
+            console.log(err);
+        });
     }
 };
 </script>

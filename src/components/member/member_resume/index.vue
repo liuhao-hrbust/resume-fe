@@ -72,15 +72,15 @@ export default {
                     c_time: '2019-9-9'
                 },
                 {
-                    resume_name: '我的简历01',
+                    resume_name: '我的简历02',
                     c_time: '2019-9-9'
                 },
                 {
-                    resume_name: '我的简历01',
+                    resume_name: '我的简历03',
                     c_time: '2019-9-9'
                 },
                 {
-                    resume_name: '我的简历01',
+                    resume_name: '我的简历04',
                     c_time: '2019-9-9'
                 }
             ]
