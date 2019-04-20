@@ -3,7 +3,7 @@
     <div class="logo">
       <router-link to="/"></router-link>
     </div>
-    <div class="jl-touxiang" id="userHead">
+    <div class="jl-touxiang" id="userHead" v-show="isLogin">
       <router-link to="/member" class="jl-tx-img 500dtongji">
         <i style="display: none;"></i>
         <img
@@ -47,8 +47,8 @@
         </ul>
       </div>
     </div>
-    <div class="jl-login">
-      <a style id="login" class="jl-login-a 500dtongji" data-_track="PC-首页-首页-顶部导航-导航栏-登陆注册">登录 / 注册</a>
+    <div class="jl-login" v-show="!isLogin">
+      <a style id="login" class="jl-login-a 500dtongji" @click="toggleModal">登录 / 注册</a>
     </div>
     <div class="jl-nav">
       <ul>
@@ -98,22 +98,27 @@
 </template>
 
 <script>
-import testService from './service';
+import actions from '@/vuex/actions/index';
+import { mapState, mapActions } from 'vuex';
 
 export default {
     name: 'jl-header',
     data() {
         return {
-            user: { user_name: '1', user_password: '1' }
+            user_name: '',
+            user_password: ''
         };
     },
-    mounted() {
-        console.log('aaa');
-        testService.postTest(this.user).then(data => {
-            console.log(data);
-        }, err => {
-            console.log(err);
-        });
+    computed: mapState({
+        isLogin: state => state.loginState.isLogin
+    }),
+    vuex: {
+        actions
+    },
+    methods: {
+        ...mapActions({
+            toggleModal: 'toggleShowModal'
+        })
     }
 };
 </script>

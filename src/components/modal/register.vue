@@ -2,18 +2,6 @@
   <div class="register">
     <form>
       <div class="form-group">
-        <label for="email">邮箱</label>
-        <input
-          type="email"
-          v-model="user.user_email"
-          class="form-control"
-          id="email"
-          name="email"
-          placeholder="Email"
-          autofocus
-        >
-      </div>
-      <div class="form-group">
         <label for="nickname">昵称</label>
         <input
           v-model="user.user_name"
@@ -73,9 +61,8 @@ export default {
 <style>
 .register {
     position: fixed;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    z-index: 2;
 }
 </style>

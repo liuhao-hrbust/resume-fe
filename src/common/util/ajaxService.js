@@ -1,4 +1,6 @@
 import jquery from './jquery';
+import router from 'vue-router';
+
 const baseUrl = 'http://127.0.0.1:3000';
 
 function send(type, url, data) {
@@ -27,8 +29,9 @@ function send(type, url, data) {
                 code === 888889
             ) {
                 resolve(res);
+            } else if (code === 333) {
+                router.push('login');
             } else {
-                // errorHandler(res);
                 reject(res);
             }
         });

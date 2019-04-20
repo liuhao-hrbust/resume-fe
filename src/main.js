@@ -4,7 +4,8 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import '../static/bootstrap.min.js';
-// import Vuex from 'vuex';
+import Vuex from 'vuex';
+import store from '@/vuex/store/index';
 
 /* eslint-disable no-unused-vars */
 import common from '@/common/common.styl';
@@ -19,7 +20,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$layer = layer;
 Vue.prototype.$jquery = jquery;
 // 不同组件之间的通信
-// Vue.use(Vuex);
+Vue.use(Vuex);
 Vue.prototype.$hub = new Vue();
 
 /* eslint-disable no-new */
@@ -27,5 +28,6 @@ new Vue({
   el: '#app',
   router,
   components: {App},
-  template: '<App/>'
+  template: '<App/>',
+  store
 });

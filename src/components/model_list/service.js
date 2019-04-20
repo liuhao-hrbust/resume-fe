@@ -4,7 +4,7 @@ import CONFIG from '@/common/ajaxConfig';
 const post = ajaxService.post;
 const listService = {
     getModelList(params) {
-        return post(CONFIG.TEST.MODEL_LIST, params);
+        return post(CONFIG.MODEL.MODEL_LIST, params);
     }
 };
 
