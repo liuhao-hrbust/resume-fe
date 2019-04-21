@@ -1,8 +1,8 @@
 <template>
   <div class="jl-header">
-    <div class="logo">
-      <router-link to="/"></router-link>
-    </div>
+    <!-- <div class="logo"> -->
+      <router-link to="/" class="logo"></router-link>
+    <!-- </div> -->
     <div class="jl-touxiang" id="userHead" v-show="isLogin">
       <router-link to="/member" class="jl-tx-img 500dtongji">
         <i style="display: none;"></i>
@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="jl-login" v-show="!isLogin">
-      <a style id="login" class="jl-login-a 500dtongji" @click="toggleModal">登录 / 注册</a>
+      <a style id="login" class="jl-login-a 500dtongji" @click="showModal">登录</a>
     </div>
     <div class="jl-nav">
       <ul>
@@ -98,7 +98,6 @@
 </template>
 
 <script>
-import actions from '@/vuex/actions/index';
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -112,13 +111,15 @@ export default {
     computed: mapState({
         isLogin: state => state.loginState.isLogin
     }),
-    vuex: {
-        actions
-    },
     methods: {
         ...mapActions({
-            toggleModal: 'toggleShowModal'
-        })
+            toggleModal: 'toggleShowModal',
+            toggleLogin: 'toggleShowLogin'
+        }),
+        showModal() {
+            this.toggleModal(true);
+            this.toggleLogin(true);
+        }
     }
 };
 </script>

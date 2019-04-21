@@ -6,6 +6,9 @@ const state = {
         showLogin: false,
         showRegister: false,
         showModal: false
+    },
+    userInfo: {
+        user_name: ''
     }
 };
 

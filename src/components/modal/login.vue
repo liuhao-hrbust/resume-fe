@@ -1,7 +1,7 @@
 <template>
-  <div class="login">
+  <div class="login modal-child">
     <h1>用户登录</h1>
-    <form id="login_form">
+    <form>
       <div class="form-group">
         <label for="user-name">用户名</label>
         <input class="form-control" placeholder="Name" v-model="user_name" id="user-name">
@@ -30,35 +30,52 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Service from './service';
-import actions from '@/vuex/actions/index';
 export default {
     data() {
         return {
             user_name: '',
-            user_password: ''
+            user_password: '',
+            username: ''
         };
     },
     methods: {
-        handleLogin() {
+        handleLogin(e) {
+            e.preventDefault();
             const params = {
                 user_name: this.user_name,
                 user_password: this.user_password
             };
-            Service.userLogin(params).then(
+            Service.login(params).then(
                 data => {
                     this.user_name = data.user_name;
                     this.user_password = data.user_password;
+                    if (data.code === 0) {
+                        this.toggleLogin(false);
+                        this.toggleModal(false);
+                        this.setUserName(params.user_name);
+                        const storage = window.localStorage;
+                        storage.user_name = params.user_name;
+                        this.toggleIsLogin(true);
+                    }
                 },
                 err => {
                     console.log(err);
                 }
             );
         },
-        createAccount() {}
-    },
-    vuex: {
-        actions
+        createAccount() {
+            this.toggleRegister(true);
+            this.toggleLogin(false);
+        },
+        ...mapActions({
+            toggleRegister: 'toggleShowRegister',
+            toggleLogin: 'toggleShowLogin',
+            toggleModal: 'toggleShowModal',
+            setUserName: 'setUserName',
+            toggleIsLogin: 'toggleIsLogin'
+        })
     }
 };
 </script>

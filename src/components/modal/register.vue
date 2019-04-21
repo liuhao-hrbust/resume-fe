@@ -1,10 +1,10 @@
 <template>
-  <div class="register">
+  <div class="register modal-child">
     <form>
       <div class="form-group">
         <label for="nickname">昵称</label>
         <input
-          v-model="user.user_name"
+          v-model="user_name"
           type="text"
           class="form-control"
           id="nickname"
@@ -15,7 +15,7 @@
       <div class="form-group">
         <label for="password">密码</label>
         <input
-          v-model="user.user_password"
+          v-model="user_password"
           type="password"
           class="form-control"
           id="password"
@@ -29,40 +29,50 @@
     <div class="message">
       <p>
         已有账号?
-        <a href="/login">点击登录</a>.
+        <a @click="toLogin">点击登录</a>.
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Service from './service';
 export default {
-    name: 'register',
     data() {
         return {
-            user: {
-                user_email: '',
-                user_name: '',
-                user_password: ''
-            }
+            user_name: '',
+            user_password: ''
         };
     },
     methods: {
         handleSubmit() {
-            Service.register(this.user).then(res => {
-                console.log(res);
-            });
-        }
+            const params = {
+                user_name: this.user_name,
+                user_password: this.user_password
+            };
+            Service.register(params).then(
+                data => {
+                    this.user_name = data.user_name;
+                    this.user_password = data.user_password;
+                    if (data.code === 0) {
+                        this.toggleRegister(false);
+                        this.toggleModal(false);
+                        this.setUserName(data.user_name);
+                    }
+                }
+            );
+        },
+        toLogin() {
+            this.toggleRegister(false);
+            this.toggleLogin(true);
+        },
+        ...mapActions({
+            toggleRegister: 'toggleShowRegister',
+            toggleLogin: 'toggleShowLogin',
+            toggleModal: 'toggleShowModal',
+            setUserName: 'setUserName'
+        })
     }
 };
 </script>
-
-<style>
-.register {
-    position: fixed;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-}
-</style>

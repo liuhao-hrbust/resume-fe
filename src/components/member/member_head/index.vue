@@ -6,7 +6,7 @@
           <div class="memberhead-avatar">
             <img src="/static/image/avatar-default.jpg" id="changehead" width="80" height="80">
           </div>
-          <p class="memberhead-name">{{user_info.user_name}}</p>
+          <p class="memberhead-name">{{user_name}}</p>
           <div class="memberhead-vipinfo">
             <a href="/member/set/" class="memberhead-config 500dtongji">账号设置</a>
           </div>
@@ -19,15 +19,23 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex';
 export default {
     name: 'memberHead',
     data() {
         return {
             user_info: {
-                created_time: '2019-19-19',
-                user_name: '渔火'
+                created_time: '2019-19-19'
             }
         };
+    },
+    computed: {
+        // ...mapState({
+        //     user_name: state => state.userInfo.user_name
+        // }),
+        user_name: function() {
+            return window.localStorage.user_name;
+        }
     }
 };
 </script>
@@ -83,17 +91,5 @@ export default {
       }
     }
   }
-}
-
-.clearfix {
-  zoom: 1;
-}
-
-.clearfix {
-  display: block;
-}
-
-.clearfix {
-  height: 1%;
 }
 </style>

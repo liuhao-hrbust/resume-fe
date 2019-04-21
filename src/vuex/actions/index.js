@@ -1,17 +1,20 @@
 import types from '../mutation-types';
 
 const actions = {
-    toggleIsLogin({ commit }) {
-        commit(types.TOGGLE_ISLOGIN);
+    toggleIsLogin({ commit }, flag) {
+        commit(types.TOGGLE_ISLOGIN, flag);
     },
-    toggleShowLogin({ commit }) {
-        commit(types.TOGGLE_SHOW_LOGIN);
+    toggleShowLogin({ commit }, flag) {
+        commit(types.TOGGLE_SHOW_LOGIN, flag);
     },
-    toggleShowRegister({ commit }) {
-        commit(types.TOGGLE_SHOW_REGISTER);
+    toggleShowRegister({ commit }, flag) {
+        commit(types.TOGGLE_SHOW_REGISTER, flag);
     },
-    toggleShowModal({ commit }) {
-        commit(types.TOGGLE_SHOW_MODAL);
+    toggleShowModal({ commit }, flag) {
+        commit(types.TOGGLE_SHOW_MODAL, flag);
+    },
+    setUserName({ commit }, name) {
+        commit(types.SET_USER_NAME, name);
     }
 };
 
