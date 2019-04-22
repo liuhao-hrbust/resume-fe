@@ -7,6 +7,7 @@ import pageThird from '@/components/resume/pageThird';
 import SkrollrContainer from '@/components/homePage/SkrollrContainer';
 import Member from '@/components/member/index';
 import ModelList from '@/components/model_list/index';
+import editResume from '@/components/editResume/editResume';
 // import { Store } from '_vuex@3.1.0@vuex';
 // import Modal from '@/components/modal/index';
 
@@ -20,15 +21,21 @@ const vueRouter = new Router({
         },
         {
             path: '/edit',
-            component: pageDefault
-        },
-        {
-            path: '/edit/two',
-            component: pageSecond
-        },
-        {
-            path: '/eidt/three',
-            component: pageThird
+            component: editResume,
+            children: [
+                {
+                    path: 'two',
+                    component: pageSecond
+                },
+                {
+                    path: 'three',
+                    component: pageThird
+                },
+                {
+                    path: 'one',
+                    component: pageDefault
+                }
+            ]
         },
         {
             path: '/member',

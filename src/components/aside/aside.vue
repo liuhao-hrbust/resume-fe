@@ -19,6 +19,10 @@
         <i class="icon style"></i>
         <a class="text" href="javascript:void(0);">风格设置</a>
       </li>
+      <li class="manager-item" @click="styleSetting">
+        <i class="icon style"></i>
+        <a class="text" href="javascript:void(0);">保存</a>
+      </li>
     </ul>
 
     <!--颜色选择器-->

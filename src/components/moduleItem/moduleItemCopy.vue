@@ -9,7 +9,7 @@
     <div class="line"></div>
     <slot>
       <dash-child class="desc-wrapper">
-        <p class="desc" contenteditable="true">
+        <p class="desc" contenteditable="true" :value="asd">
           1......<br>
           2......<br>
           3......

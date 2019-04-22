@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="clearfix">
     <Aside class="aside"></Aside>
-    <div class="main">
+    <div class="edit">
       <keep-alive>
         <router-view/>
       </keep-alive>
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Aside from './aside/aside';
+import Aside from '../aside/aside';
 
 export default {
-    name: 'App',
+    name: 'EditResume',
     components: {
         Aside
     }
@@ -32,7 +32,7 @@ export default {
     z-index: 9999;
   }
 
-  .main {
+  .edit {
     float: left;
     background-color: #ffffff;
     position: relative;

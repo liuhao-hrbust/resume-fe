@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-import Aside from './components/aside/aside';
 import Head from './components/homePage/head';
 import './bootstrap.css';
 import Modal from './components/modal/index';
@@ -15,8 +14,7 @@ export default {
     name: 'App',
     components: {
         Modal,
-        Head,
-        Aside
+        Head
     }
 };
 </script>
@@ -26,18 +24,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-
-  .clearfix {
-    zoom: 1;
-  }
-
-  .clearfix {
-    display: block;
-  }
-
-  .clearfix {
-    height: 1%;
-  }
 
   .aside {
     z-index: 9999;
