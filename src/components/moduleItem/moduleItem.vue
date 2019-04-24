@@ -4,7 +4,7 @@
     <h3 class="title" contenteditable="true" :style="moduleTitleStyle">{{ title }}</h3>
     <slot>
       <dash-child class="desc-wrapper">
-        <textarea class="desc" contenteditable="true" v-model="contents"></textarea>
+        <textarea class="desc" v-model="contents"></textarea>
       </dash-child>
     </slot>
   </div>

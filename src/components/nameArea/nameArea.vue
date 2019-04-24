@@ -2,20 +2,20 @@
   <div>
     <dash-child class="user-name">
       <div class="name-wrapper">
-        <input class="name-content" v-model="name" placeholder="姓名">
+        <span class="name-content">{{nameInfo.name ? nameInfo.name : '姓名'}}</span>
       </div>
-      {{name}}
     </dash-child>
     <dash-child class="description">
-      <span class="desc-content" contenteditable="true">
-        <span v-if="desc===''">一句话介绍自己，为什么HR选择你...</span>
-        {{desc}}
+      <span class="desc-content">
+        <span v-if="nameInfo.desc===''">一句话介绍自己，为什么HR选择你...</span>
+        {{nameInfo.desc}}
       </span>
     </dash-child>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+// import { mapActions } from 'vuex';
 import dashChild from '../dashChild/dashChild.vue';
 import dashParent from '../dashParent/dashParent.vue';
 
@@ -32,9 +32,7 @@ export default {
 
     data() {
         return {
-            isActive: false,
-            name: '',
-            desc: ''
+            isActive: false
         };
     },
     methods: {
@@ -44,19 +42,13 @@ export default {
         hideDash() {
             this.isActive = false;
         }
-    },
-    mounted() {
-        this.name = this.nameInfo.name;
-        this.desc = this.nameInfo.desc;
-    },
-    watch: {
-        name: function() {
-            this.$hub.$emit('changeName', this.name);
-        },
-        desc: function() {
-            this.$hub.$emit('changeDesc', this.desc);
-        }
     }
+    // computed: {
+    //     ...mapActions({
+    //         editUserName: 'editUserName',
+    //         editUserDesc: 'editUserDesc'
+    //     })
+    // }
 };
 </script>
 

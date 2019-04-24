@@ -2,22 +2,18 @@
   <dash-child>
     <div class="item-list">
       <div class="tips">
-        <dash-child class="input-item">
+        <dash-child class="input-item" v-model="date">
           <input placeholder="填写时间">
         </dash-child>
-        <dash-child class="input-item">
+        <dash-child class="input-item" v-model="school">
           <input placeholder="填写学校、公司名称">
         </dash-child>
-        <dash-child class="input-item">
+        <dash-child class="input-item" v-model="duty">
           <input placeholder="填写职务、专业名称">
         </dash-child>
       </div>
       <dash-child>
-        <div class="desc" contenteditable="true">
-          就是这里... <br>
-          写下你牛逼的过往..... <br>
-          那是你逝去的青春.....
-        </div>
+               <textarea class="desc" v-model="contents"></textarea>
       </dash-child>
 
     </div>
@@ -31,6 +27,30 @@
   export default {
     components: {
       dashChild
+    },
+    props: {
+        content: {
+            type: String
+        },
+        index: {
+            type: Number
+        }
+    },
+    data() {
+        return {
+            contents: ``,
+            date: '',
+            school: '',
+            duty: ''
+        };
+    },
+    mounted() {
+        this.contents = this.content;
+    },
+    watch: {
+        contents: function() {
+            this.$hub.$emit('changeUserInfo', this.title, this.contents);
+        }
     }
   };
 </script>

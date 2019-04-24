@@ -15,6 +15,12 @@ const actions = {
     },
     setUserName({ commit }, name) {
         commit(types.SET_USER_NAME, name);
+    },
+    editUserName({commit}, name) {
+        commit(types.EDIT_USER_NAME, name);
+    },
+    editUserDesc({commit}, name) {
+        commit(types.EDIT_USER_NAME, name);
     }
 };
 

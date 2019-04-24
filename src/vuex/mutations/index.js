@@ -14,6 +14,12 @@ const mutations = {
     },
     [types.SET_USER_NAME](state, name) {
         state.userInfo.user_name = name;
+    },
+    [types.EDIT_USER_NAME](state, name) {
+        state.resumeEdit.user_name = name;
+    },
+    [types.EDIT_USER_DESC](state, desc) {
+        state.resumeEdit.user_desc = desc;
     }
 };
 

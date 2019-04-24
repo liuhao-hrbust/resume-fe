@@ -3,7 +3,7 @@
        v-if="isModuleShow">
     <span class="dash-icon icon-edit" v-if="isActive" :style="{'background-color':editBgColor}"
           @click="showEditDialog"></span>
-    <span class="dash-icon icon-add" v-if="isActive" :style="{'background-color':addBgColor}" @click="childAdd"></span>
+    <!-- <span class="dash-icon icon-add" v-if="isActive" :style="{'background-color':addBgColor}" @click="childAdd"></span> -->
     <span class="dash-icon icon-delete" v-if="isActive" @click="childDelete"></span>
     <slot></slot>
   </div>
@@ -35,9 +35,9 @@
       hideDash() {
         this.isActive = false;
       },
-      childAdd() {
-        this.$emit('eventAdd', 'add');
-      },
+    //   childAdd() {
+    //     this.$emit('eventAdd', 'add');
+    //   },
       childDelete() {
         this.$layer.open({
           icon: 3,
@@ -83,10 +83,10 @@
     .icon-edit
       background: #00c091 url(../../../static/image/toolbar.png) no-repeat 0 0
       background-position: -210px 2px
-    .icon-add
-      background: #00c091 url(../../../static/image/toolbar.png) no-repeat 0 0
-      background-position: -125px 3px
-      margin-right: 30px
+    // .icon-add
+    //   background: #00c091 url(../../../static/image/toolbar.png) no-repeat 0 0
+    //   background-position: -125px 3px
+    //   margin-right: 30px
     .icon-delete
       background: #00c091 url(../../../static/image/toolbar.png) no-repeat 0 0
       background-position: -154px 3px

@@ -1,114 +1,93 @@
 <template>
-  <div class="wrapper clearfix" id="pageDefault">
-    <div class="aside-left" ref="asideLeftHook">
-      <!--用户头像-->
-      <dash-parent>
-        <edit-image class="user-head" :width="'120'" :height="'150'" :isCircle="false"></edit-image>
-      </dash-parent>
-      <!--姓名模块-->
-      <dash-parent @eventShowDialog="ShowDialogListener" :editBgColor="'#00c091'">
-        <name-area
-          class="left-name-area"
-          @eventShowDialog="ShowDialogListener"
-          :nameInfo="userName"
-        ></name-area>
-      </dash-parent>
-      <!--基本信息-->
-      <dash-parent @eventShowDialog="ShowDialogListener" :editBgColor="'#00c091'">
-        <base-info-item
-          v-for="item in userInfoArr"
-          :key="item.id"
-          :icon="item.icon"
-          :title="item.title"
-          :holder="item.holder"
-        ></base-info-item>
-      </dash-parent>
-      <!--技能特长-->
-      <dash-parent class="skill" @eventAdd="skillBarAddListener" :addBgColor="'#00c091'">
-        <h2 class="skill-title" contenteditable="true">技能特长</h2>
-        <skill-bar v-for="bar in skillBarArr" :key="bar.id"></skill-bar>
-      </dash-parent>
-    </div>
-
-    <div class="aside-right">
-      <div class="right-content">
-        <!--姓名模块-->
-        <dash-parent @eventShowDialog="ShowDialogListener" :editBgColor="'#00c091'">
-          <name-area class="name-edit" @eventShowDialog="ShowDialogListener" :nameInfo="userName"></name-area>
-        </dash-parent>
-        <!--求职意向-->
-        <dash-parent>
-          <module-item
-            :title="'求职意向'"
-            :moduleIconStyle="moduleIconStyle"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'like.png'"
-          ></module-item>
-        </dash-parent>
-        <!--教育经历-->
-        <dash-parent @eventAdd="itemEducationAddListener" :addBgColor="'#00c091'">
-          <module-item
-            :title="'教育经历'"
-            :moduleIconStyle="moduleIconStyle"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'education.png'"
-          >
-            <module-item-list v-for="item in itemEducationArr" :key="item.id"></module-item-list>
-          </module-item>
-        </dash-parent>
-        <!--项目经验-->
-        <dash-parent @eventAdd="itemExperienceAddListener" :addBgColor="'#00c091'">
-          <module-item
-            :title="'项目经验'"
-            :moduleIconStyle="moduleIconStyle"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'experience.png'"
-          >
-            <module-item-list v-for="item in itemExperienceArr" :key="item.id"></module-item-list>
-          </module-item>
-        </dash-parent>
-        <!--专业技能-->
-        <dash-parent>
-          <module-item
-            :title="'专业技能'"
-            :moduleIconStyle="moduleIconStyle"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'skill.png'"
-            :content="userInfoo.skill"
-          ></module-item>
-        </dash-parent>
-        <!--自我评价-->
-        <dash-parent>
-          <module-item
-            :title="'自我评价'"
-            :moduleIconStyle="moduleIconStyle"
-            :moduleTitleStyle="moduleTitleStyle"
-            :content="userInfoo.self_val"
-            :moduleIcon="'self_val.png'"
-          ></module-item>
-        </dash-parent>
-        <!--自定义模块-->
-        <dash-parent>
-          <module-item
-            :title="'自定义模块1'"
-            :moduleIconStyle="moduleIconStyle"
-            :content="userInfoo.extra1"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'self_val.png'"
-          ></module-item>
-        </dash-parent>
-        <dash-parent>
-          <module-item
-            :title="'自定义模块2'"
-            :moduleIconStyle="moduleIconStyle"
-            :content="userInfoo.extra2"
-            :moduleTitleStyle="moduleTitleStyle"
-            :moduleIcon="'self_val.png'"
-          ></module-item>
-        </dash-parent>
-      </div>
-    </div>
-
+  <div class="second-wrapper clearfix" id="secondPage">
+    <div class="top-bg" ref="topBg"></div>
+    <!--用户头像-->
+    <dash-parent class="user-head-wrapper">
+      <edit-image class="user-head" :width="'120'" :height="'150'" :isCircle="false"></edit-image>
+    </dash-parent>
+    <!--姓名模块-->
+    <dash-parent
+      class="name-area-wrapper"
+      @eventShowDialog="ShowDialogListener"
+      :editBgColor="'#00c091'"
+    >
+      <name-area class="name-area" :nameInfo="userName"></name-area>
+    </dash-parent>
+    <!--基本信息-->
+    <dash-parent
+      class="clearfix base-msg-wrapper"
+      @eventShowDialog="ShowDialogListener"
+      :editBgColor="'#00c091'"
+    >
+      <base-info-item
+        class="base-msg"
+        v-for="item in userInfoArr"
+        :key="item.id"
+        :icon="item.icon"
+        :title="item.title"
+        :holder="item.holder"
+      ></base-info-item>
+    </dash-parent>
+    <!--求职意向-->
+    <dash-parent class="module-item-wrapper">
+      <module-item-copy
+        :content="userInfoo.target"
+        :title="'求职意向'"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+      ></module-item-copy>
+    </dash-parent>
+    <!--教育经历-->
+    <dash-parent>
+      <module-item-copy
+        :title="'教育经历'"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+        :config="userInfoo.education"
+      >
+        <module-item-list v-for="item in itemEducationArr" :key="item.id"></module-item-list>
+      </module-item-copy>
+    </dash-parent>
+    <!--项目经验-->
+    <dash-parent>
+      <module-item-copy
+        :config="userInfoo.experience"
+        :title="'项目经验'"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+      >
+        <module-item-list v-for="item in itemExperienceArr" :key="item.id"></module-item-list>
+      </module-item-copy>
+    </dash-parent>
+    <!--技能特长-->
+    <dash-parent class="skill-wrapper">
+      <module-item-copy
+        :title="'技能特长'"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+      >
+        <div class="hr-1px" style="height: 1px"></div>
+        <skill-bar class="skill-bar-item" v-for="bar in skillBarArr" :key="bar.id"></skill-bar>
+      </module-item-copy>
+    </dash-parent>
+    <!--自我评价-->
+    <dash-parent>
+      <module-item-copy
+        :title="'自我评价'"
+        :content="userInfoo.self_val"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+      ></module-item-copy>
+    </dash-parent>
+    <!--自定义模块-->
+    <dash-parent>
+      <module-item-copy
+        :title="'自定义模块'"
+        :content="userInfoo.extra"
+        :moduleTitleStyle="moduleTitleStyle"
+        :moduleTriangleStyle="moduleTriangleStyle"
+      ></module-item-copy>
+    </dash-parent>
     <!--编辑基础信息的弹窗-->
     <base-dialog
       v-show="false"
@@ -125,7 +104,7 @@ import nameArea from '../nameArea/nameArea.vue';
 import baseInfoItem from '../baseInfoItem/baseInfoItem.vue';
 import skillBar from '../skillBar/skillBar.vue';
 import dashParent from '../dashParent/dashParent.vue';
-import moduleItem from '../moduleItem/moduleItem.vue';
+import moduleItemCopy from '../moduleItem/moduleItemCopy.vue';
 import moduleItemList from '../moduleItemList/moduleItemList.vue';
 import baseDialog from '../baseDialog/baseDialog.vue';
 import { saveAs } from '../../assets/js/saveAs';
@@ -137,7 +116,7 @@ export default {
         baseInfoItem,
         skillBar,
         dashParent,
-        moduleItem,
+        moduleItemCopy,
         moduleItemList,
         baseDialog
     },
@@ -150,12 +129,11 @@ export default {
                 name: '',
                 desc: '',
                 educationInfo: defaultContent,
-                skill: defaultContent,
                 self_val: defaultContent,
-                extra1: defaultContent,
-                extra2: defaultContent
+                extra: defaultContent,
+                target: defaultContent
             },
-            skillBarArr: [1],
+            skillBarArr: [1, 1],
             itemEducationArr: [1],
             itemExperienceArr: [1],
             // 编辑基础信息的弹框
@@ -193,79 +171,49 @@ export default {
                 name: '',
                 desc: ''
             },
-            // 模块图标样式
-            moduleIconStyle: { 'background-color': '#254665' },
-
+            // 模块右侧三角样式
+            moduleTriangleStyle: {
+                'border-left-color': 'red',
+                'border-bottom-color': 'red'
+            },
             // 模块标题样式
             moduleTitleStyle: {
-                color: '#254665',
-                'border-bottom': '1px solid #254665'
+                background: 'red'
             }
         };
     },
-    // 生命周期函数
-    created: function() {
-        console.log('pageDefault created...');
+    created() {
         // 接收到保存的信息
         this.$hub.$on('saveAs', type => {
-            saveAs(type, 'pageDefault');
-        });
-        this.$hub.$on('changeUserInfo', (title, content) => {
-            switch (title) {
-                case '专业技能':
-                    this.userInfoo.skill = content;
-                    console.log(this.userInfoo.skill);
-                    break;
-                case '自我评价':
-                    this.userInfoo.self_val = content;
-                    break;
-                case '自定义模块1':
-                    this.userInfoo.extra1 = content;
-                    break;
-                case '自定义模块2':
-                    this.userInfoo.extra2 = content;
-                    break;
-                default:
-                    break;
-            }
-        });
-        // 接收到更改名字的信息
-        this.$hub.$on('changeName', name => {
-            console.log(name);
-            this.userInfoo.name = name;
-        });
-        // 接收到更改名字的信息
-        this.$hub.$on('changeDesc', desc => {
-            this.userInfoo.desc = desc;
+            saveAs(type, 'secondPage');
         });
         // 接收到切换颜色的信息
         this.$hub.$on('userPickedColor', color => {
-            // 构造模块图标样式
-            this.moduleIconStyle = { 'background-color': color };
-            // 构造模块标题样式
-            this.moduleTitleStyle = {
-                color: color,
+            // 构造三角样式
+            this.moduleTriangleStyle = {
+                'border-left-color': color,
                 'border-bottom-color': color
             };
-            this.$refs.asideLeftHook.style.backgroundColor = color;
+            // 构造模块标题样式
+            this.moduleTitleStyle = { background: color };
+            this.$refs.topBg.style.backgroundColor = color;
         });
     },
     methods: {
-        // 增加skillBar的数量
-        skillBarAddListener() {
-            this.skillBarArr.push(1);
-        },
+        // // 增加skillBar的数量
+        // skillBarAddListener() {
+        //     this.skillBarArr.push(1);
+        // },
 
-        // 添加教育项数量
-        itemEducationAddListener() {
-            this.itemEducationArr.push(1);
-        },
+        // // 添加教育项数量
+        // itemEducationAddListener() {
+        //     this.itemEducationArr.push(1);
+        // },
 
-        // 添加经验数量
-        itemExperienceAddListener() {
-            this.itemExperienceArr.push(1);
-        },
-
+        // // 添加经验数量
+        // itemExperienceAddListener() {
+        //     this.itemExperienceArr.push(1);
+        // },
         // 打开编辑基础信息框
         ShowDialogListener() {
             this.dialogIndex = this.$layer.open({
@@ -277,7 +225,6 @@ export default {
                 content: this.$jquery('#idBaseDialog')
             });
         },
-
         // 基础信息编辑保存
         dialogSaveListener(userInfo, userName) {
             // 遍历赋值
@@ -300,68 +247,69 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.wrapper {
+.second-wrapper {
   width: 100%;
   height: 100%;
   color: #000;
-  overflow: hidden;
-  background-color: #ffffff;
+  text-align: left;
 
-  .aside-left {
-    float: left;
-    width: 270px;
-    height: 100%;
-    color: #ffffff;
-    background-color: #254665;
+  .top-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 140px;
+    background: red;
+  }
 
-    .user-head {
-      margin-top: 40px;
-    }
+  .user-head-wrapper {
+    width: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
-    .left-name-area {
+  .name-area-wrapper {
+    margin: 5px 0 0 30px;
+    width: 600px;
+
+    .name-content {
       color: #ffffff;
-
-      .name-content {
-        text-align: center;
-        color: #ffffff;
-      }
     }
 
-    .skill {
-      margin-top: 30px;
+    .desc-content {
+      color: #ffffff;
+    }
+  }
 
-      .skill-title {
-        outline: none;
-        font-size: 20px;
-        line-height: 25px;
-        text-align: left;
+  .base-msg-wrapper {
+    display: inline-block;
+    margin-top: 20px;
+
+    .base-msg {
+      float: left;
+      padding-right: 20px;
+      color: #444;
+      margin-right: 10px;
+
+      .icon {
+        filter: brightness(50%);
       }
     }
   }
 
-  .aside-right {
-    float: right;
-    width: 610px;
-    height: 100%;
-    color: #000;
+  .skill-wrapper {
+    .skill-bar-item {
+      display: inline-block;
+      width: 31%;
+      margin-right: 10px;
 
-    .right-content {
-      margin: 10px;
-    }
-
-    .name-edit {
-      margin-top: 10px;
-
-      .user-name {
-        text-align: left;
-
-        .name-content {
-          color: #222;
-        }
+      .skill-title-name {
+        color: #222;
       }
 
-      .description {
-        text-align: left;
+      .percent {
+        color: #222;
       }
     }
   }

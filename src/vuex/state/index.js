@@ -9,6 +9,10 @@ const state = {
     },
     userInfo: {
         user_name: ''
+    },
+    resumeEdit: {
+        user_name: '',
+        user_desc: ''
     }
 };
 
