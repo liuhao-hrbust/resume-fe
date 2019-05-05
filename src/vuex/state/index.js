@@ -12,7 +12,16 @@ const state = {
     },
     resumeEdit: {
         user_name: '',
-        user_desc: ''
+        user_desc: '',
+        educationInfo: `哈理工
+        计大
+        哈工大`,
+        self_val: `hao
+        henhao
+        feichanghao`,
+        extra: `阿斯顿阿斯顿烦烦烦
+        阿斯顿`,
+        target: `                                                   前端工程师                                 北京`
     }
 };
 

@@ -31,7 +31,7 @@
     <!--求职意向-->
     <dash-parent class="module-item-wrapper">
       <module-item-copy
-        :content="userInfoo.target"
+        :lkey="userInfoo.target"
         :title="'求职意向'"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
@@ -62,6 +62,7 @@
     <!--技能特长-->
     <dash-parent class="skill-wrapper">
       <module-item-copy
+        :lkey="userInfoo.skill"
         :title="'技能特长'"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
@@ -73,8 +74,8 @@
     <!--自我评价-->
     <dash-parent>
       <module-item-copy
+        :lkey="userInfoo.self_val"
         :title="'自我评价'"
-        :content="userInfoo.self_val"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
       ></module-item-copy>
@@ -83,7 +84,7 @@
     <dash-parent>
       <module-item-copy
         :title="'自定义模块'"
-        :content="userInfoo.extra"
+        :lkey="userInfoo.extra"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
       ></module-item-copy>
@@ -91,6 +92,7 @@
     <!--编辑基础信息的弹窗-->
     <base-dialog
       v-show="false"
+      :userName="userInfoo"
       id="idBaseDialog"
       @dialogEventSave="dialogSaveListener"
       @dialogEventCancel="dialogCancelListener"
@@ -121,17 +123,16 @@ export default {
         baseDialog
     },
     data() {
-        const defaultContent = `1......
-2......
-3......`;
         return {
             userInfoo: {
                 name: '',
                 desc: '',
-                educationInfo: defaultContent,
-                self_val: defaultContent,
-                extra: defaultContent,
-                target: defaultContent
+                educationInfo: 'educationInfo',
+                self_val: 'self_val',
+                extra: 'extra',
+                target: 'target',
+                detail: [],
+                skill: 'skill'
             },
             skillBarArr: [1, 1],
             itemEducationArr: [1],
@@ -230,7 +231,6 @@ export default {
             // 遍历赋值
             this.userInfoArr.forEach((info, index) => {
                 info.title = userInfo[index].name;
-                console.log(info.title);
             });
             // 姓名
             this.userName.name = userName.name;

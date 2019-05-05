@@ -7,7 +7,7 @@
     <div class="line"></div>
     <slot>
       <dash-child class="desc-wrapper">
-        <textarea class="desc" v-model="contents"></textarea>
+        <textarea class="desc" v-model="content"></textarea>
       </dash-child>
     </slot>
   </div>
@@ -15,6 +15,7 @@
 
 <script type="text/ecmascript-6" scoped>
 import dashChild from '../dashChild/dashChild.vue';
+import { mapState } from 'vuex';
 
 export default {
     props: {
@@ -28,7 +29,10 @@ export default {
         moduleTitleStyle: {
             type: Object
         },
-        content: {
+        // content: {
+        //     type: String
+        // },
+        lkey: {
             type: String
         }
     },
@@ -48,13 +52,20 @@ export default {
         };
     },
     mounted() {
-        this.contents = this.content;
+        // this.contents = this.content;
+        // console.log(this.lkey + '');
     },
-    watch: {
-        contents: function() {
-            this.$hub.$emit('changeUserInfo', this.title, this.contents);
+    // watch: {
+    //     content: function() {
+    //         this.$hub.$emit('changeUserInfo', this.title, this.contents);
+    //     }
+    // },
+    computed: mapState({
+        content: function(state) {
+            console.log(this.lkey);
+            return state.resumeEdit[this.lkey];
         }
-    }
+    })
 };
 </script>
 
