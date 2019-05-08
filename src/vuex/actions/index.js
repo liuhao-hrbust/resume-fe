@@ -16,11 +16,14 @@ const actions = {
     setUserName({ commit }, name) {
         commit(types.SET_USER_NAME, name);
     },
-    editUserName({commit}, name) {
+    editUserName({ commit }, name) {
         commit(types.EDIT_USER_NAME, name);
     },
-    editUserDesc({commit}, name) {
+    editUserDesc({ commit }, name) {
         commit(types.EDIT_USER_NAME, name);
+    },
+    setResumeInfo({ commit }, info) {
+        commit(types.SET_RESUME_USERINFOO, info);
     }
 };
 

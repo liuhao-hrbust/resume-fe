@@ -43,20 +43,20 @@
         :title="'教育经历'"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
-        :config="userInfoo.education"
+        :lkey="userInfoo.educationInfo"
       >
-        <module-item-list v-for="item in itemEducationArr" :key="item.id"></module-item-list>
+        <!-- <module-item-list v-for="item in itemEducationArr" :key="item.id"></module-item-list> -->
       </module-item-copy>
     </dash-parent>
     <!--项目经验-->
     <dash-parent>
       <module-item-copy
-        :config="userInfoo.experience"
+        :lkey="userInfoo.experience"
         :title="'项目经验'"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"
       >
-        <module-item-list v-for="item in itemExperienceArr" :key="item.id"></module-item-list>
+        <!-- <module-item-list v-for="item in itemExperienceArr" :key="item.id"></module-item-list> -->
       </module-item-copy>
     </dash-parent>
     <!--技能特长-->
@@ -110,6 +110,7 @@ import moduleItemCopy from '../moduleItem/moduleItemCopy.vue';
 import moduleItemList from '../moduleItemList/moduleItemList.vue';
 import baseDialog from '../baseDialog/baseDialog.vue';
 import { saveAs } from '../../assets/js/saveAs';
+import { mapActions } from 'vuex';
 
 export default {
     components: {
@@ -131,8 +132,8 @@ export default {
                 self_val: 'self_val',
                 extra: 'extra',
                 target: 'target',
-                detail: [],
-                skill: 'skill'
+                skill: 'skill',
+                experience: 'experience'
             },
             skillBarArr: [1, 1],
             itemEducationArr: [1],
@@ -183,6 +184,9 @@ export default {
             }
         };
     },
+    mounted() {
+        this.getUserInfo();
+    },
     created() {
         // 接收到保存的信息
         this.$hub.$on('saveAs', type => {
@@ -215,6 +219,9 @@ export default {
         // itemExperienceAddListener() {
         //     this.itemExperienceArr.push(1);
         // },
+        ...mapActions({
+            setResumeInfo: 'setResumeInfo'
+        }),
         // 打开编辑基础信息框
         ShowDialogListener() {
             this.dialogIndex = this.$layer.open({
@@ -225,6 +232,22 @@ export default {
                 area: ['740px', '400px'],
                 content: this.$jquery('#idBaseDialog')
             });
+        },
+        getUserInfo() {
+            const data = {
+                user_name: '',
+                user_desc: '',
+                educationInfo: `哈理
+        计大
+        哈工大`,
+                self_val: `hao
+        henhao
+        feichanghao`,
+                extra: `阿斯顿阿斯顿烦烦烦
+        阿斯顿`,
+                target: `                                                   前端工程师                                 北京`
+            };
+            this.setResumeInfo(data);
         },
         // 基础信息编辑保存
         dialogSaveListener(userInfo, userName) {

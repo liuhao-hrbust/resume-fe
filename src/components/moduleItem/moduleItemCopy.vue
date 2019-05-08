@@ -62,7 +62,6 @@ export default {
     // },
     computed: mapState({
         content: function(state) {
-            console.log(this.lkey);
             return state.resumeEdit[this.lkey];
         }
     })
