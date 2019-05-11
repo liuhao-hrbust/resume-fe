@@ -73,7 +73,7 @@ export default {
             toggleRegister: 'toggleShowRegister',
             toggleLogin: 'toggleShowLogin',
             toggleModal: 'toggleShowModal',
-            setUserName: 'setUserName',
+            setUserName: 'editUserName',
             toggleIsLogin: 'toggleIsLogin'
         })
     }

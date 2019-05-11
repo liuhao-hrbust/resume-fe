@@ -13,17 +13,38 @@ const actions = {
     toggleShowModal({ commit }, flag) {
         commit(types.TOGGLE_SHOW_MODAL, flag);
     },
-    setUserName({ commit }, name) {
-        commit(types.SET_USER_NAME, name);
-    },
     editUserName({ commit }, name) {
         commit(types.EDIT_USER_NAME, name);
     },
-    editUserDesc({ commit }, name) {
+    setuser_name({ commit }, name) {
+        commit(types.SET_USER_NAME, name);
+    },
+    setuser_desc({ commit }, name) {
         commit(types.EDIT_USER_NAME, name);
     },
     setResumeInfo({ commit }, info) {
         commit(types.SET_RESUME_USERINFOO, info);
+    },
+    setskill({commit}, info) {
+        commit(types.SET_RESUME_SKILL, info);
+    },
+    setexperience({commit}, info) {
+        commit(types.SET_RESUME_EXPERIENCE, info);
+    },
+    seteducationInfo({commit}, info) {
+        commit(types.SET_RESUME_EDUCATION_INFO, info);
+    },
+    settarget({commit}, info) {
+        commit(types.SET_RESUME_TARGET, info);
+    },
+    setself_val({commit}, info) {
+        commit(types.SET_RESUME_SELF_VAL, info);
+    },
+    setextra({commit}, info) {
+        commit(types.SET_RESUME_EXTRA, info);
+    },
+    setResumeItem({commit}, item, info) {
+        commit(types.SET_RESUME_ITEM, item, info);
     }
 };
 

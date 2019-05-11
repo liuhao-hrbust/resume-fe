@@ -7,7 +7,7 @@
     <div class="line"></div>
     <slot>
       <dash-child class="desc-wrapper">
-        <textarea class="desc" v-model="content"></textarea>
+        <textarea class="desc" v-model="contents"></textarea>
       </dash-child>
     </slot>
   </div>
@@ -15,7 +15,8 @@
 
 <script type="text/ecmascript-6" scoped>
 import dashChild from '../dashChild/dashChild.vue';
-import { mapState } from 'vuex';
+// eslint-disable-next-line
+import { mapState, mapActions } from 'vuex';
 
 export default {
     props: {
@@ -29,9 +30,6 @@ export default {
         moduleTitleStyle: {
             type: Object
         },
-        // content: {
-        //     type: String
-        // },
         lkey: {
             type: String
         }
@@ -40,31 +38,43 @@ export default {
         dashChild
     },
     methods: {
+        ...mapActions({
+            setValue: 'setResumeItem'
+        }),
         val(icon) {
             if (icon) {
                 return require('./' + icon);
             }
+        },
+        aaa(value) {
+            // console.log(value);
+            this.setValue(this.lkey, value);
         }
     },
+
     data() {
         return {
-            contents: ``
+            contents: '',
+            count: 0
         };
     },
-    mounted() {
-        // this.contents = this.content;
-        // console.log(this.lkey + '');
-    },
-    // watch: {
-    //     content: function() {
-    //         this.$hub.$emit('changeUserInfo', this.title, this.contents);
-    //     }
-    // },
     computed: mapState({
-        content: function(state) {
+        content: function(state, newValue) {
             return state.resumeEdit[this.lkey];
         }
-    })
+    }),
+    mounted() {
+        this.contents = this.content;
+    },
+    watch: {
+        contents(newValue) {
+            // console.log(newValue);
+            if (this.count > 0) {
+                this.setValue({ item: this.lkey, info: newValue });
+            }
+            this.count++;
+        }
+    }
 };
 </script>
 

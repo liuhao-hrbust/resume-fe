@@ -11,7 +11,8 @@ const types = {
     SET_RESUME_TARGET: 'SET_RESUME_TARGET', // 求职目标
     SET_RESUME_EXTRA: 'SET_RESUME_EXTRA', // 自定义模块
     SET_RESUME_USERINFOO: 'SET_RESUME_USERINFOO', // 整体设定
-    SET_RESUME_SKILL: 'SET_RESUME_SKILL' // 简历整体设定
+    SET_RESUME_EXPERIENCE: 'SET_RESUME_EXPERIENCE', // 项目经验
+    SET_RESUME_ITEM: 'SET_RESUME_ITEM' // 对传入的项进行更改
 };
 
 export default types;

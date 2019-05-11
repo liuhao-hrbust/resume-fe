@@ -12,10 +12,10 @@ const mutations = {
     [types.TOGGLE_SHOW_MODAL](state, flag) {
         state.modalState.showModal = flag;
     },
-    [types.SET_USER_NAME](state, name) {
+    [types.EDIT_USER_NAME](state, name) {
         state.userInfo.user_name = name;
     },
-    [types.EDIT_USER_NAME](state, name) {
+    [types.SET_USER_NAME](state, name) {
         state.resumeEdit.user_name = name;
     },
     [types.EDIT_USER_DESC](state, desc) {
@@ -38,6 +38,14 @@ const mutations = {
     },
     [types.SET_RESUME_USERINFOO](state, info) {
         state.resumeEdit = info;
+    },
+    [types.SET_RESUME_EXPERIENCE](state, info) {
+        state.resumeEdit.experience = info;
+    },
+    [types.SET_RESUME_ITEM](state, {item, info}) {
+        // console.log(item);
+        console.log(info);
+        state.resumeEdit[item] = info;
     }
 };
 

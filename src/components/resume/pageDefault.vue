@@ -245,6 +245,7 @@ export default {
         feichanghao`,
                 extra: `阿斯顿阿斯顿烦烦烦
         阿斯顿`,
+        experience: `三十多个项目`,
                 target: `                                                   前端工程师                                 北京`
             };
             this.setResumeInfo(data);
