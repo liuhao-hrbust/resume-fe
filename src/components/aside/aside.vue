@@ -19,9 +19,13 @@
         <i class="icon style"></i>
         <a class="text" href="javascript:void(0);">风格设置</a>
       </li>
-      <li class="manager-item" @click="styleSetting">
+      <li class="manager-item" @click="saveResume">
         <i class="icon style"></i>
         <a class="text" href="javascript:void(0);">保存</a>
+      </li>
+      <li>
+        <span>简历名称</span>
+        <input type="text" v-model="resumeName">>
       </li>
     </ul>
 
@@ -45,6 +49,7 @@
 <script type="text/ecmascript-6">
 import colorPicker from '../colorPicker/colorPicker.vue';
 import templateSwitch from '../templateSwitch/templateSwitch.vue';
+import { mapActions, mapState } from 'vuex';
 export default {
     components: {
         colorPicker,
@@ -52,10 +57,17 @@ export default {
     },
     data() {
         return {
-            dialogIndex: 0
+            dialogIndex: 0,
+            resumeName: ''
         };
     },
+    computed: mapState({
+        isLogin: state => state.loginState.isLogin
+    }),
     methods: {
+        ...mapActions({
+            setResumeName: 'setResumeName'
+        }),
         styleSetting() {
             this.dialogIndex = this.$layer.open({
                 type: 1,
@@ -105,11 +117,20 @@ export default {
             // 通过总线发送数据
             this.$hub.$emit('saveAs', 'pdf');
         },
+        // 保存到服务器
+        saveResume() {
+            this.$hub.$emit('saveResume');
+        },
         // 保存为PNG格式
         saveAsPNG() {
             console.log('saveAsPNG...');
             // 通过总线发送数据
             this.$hub.$emit('saveAs', 'png');
+        }
+    },
+    watch: {
+        resumeName(newValue) {
+            this.setResumeName(newValue);
         }
     }
 };

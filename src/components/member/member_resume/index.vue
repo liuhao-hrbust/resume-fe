@@ -61,7 +61,19 @@
 </template>
 
 <script>
+import resumeService from './service';
 export default {
+    methods: {
+        getResumeList() {
+            resumeService.getResumeList().then(data => {
+                // this.resume_list = data;
+                console.log(data);
+            });
+        }
+    },
+    mounted() {
+        this.getResumeList();
+    },
     name: 'memberResume',
     components: {},
     data() {

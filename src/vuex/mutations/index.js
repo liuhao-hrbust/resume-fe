@@ -42,10 +42,20 @@ const mutations = {
     [types.SET_RESUME_EXPERIENCE](state, info) {
         state.resumeEdit.experience = info;
     },
-    [types.SET_RESUME_ITEM](state, {item, info}) {
-        // console.log(item);
-        console.log(info);
+    [types.SET_RESUME_ITEM](state, { item, info }) {
         state.resumeEdit[item] = info;
+    },
+    [types.SET_DETAIL_ITEM](state, { item, info }) {
+        state.resumeEdit[item] = info;
+    },
+    [types.SET_RESUME_USER_NAME](state, info) {
+        state.resumeEdit.user_name = info;
+    },
+    [types.SET_RESUME_USER_DESC](state, info) {
+        state.resumeEdit.user_desc = info;
+    },
+    [types.SET_RESUME_NAME](state, info) {
+        state.resumeEdit.resumeName = info;
     }
 };
 

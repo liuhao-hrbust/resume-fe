@@ -110,7 +110,8 @@ import moduleItemCopy from '../moduleItem/moduleItemCopy.vue';
 import moduleItemList from '../moduleItemList/moduleItemList.vue';
 import baseDialog from '../baseDialog/baseDialog.vue';
 import { saveAs } from '../../assets/js/saveAs';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
+import resumeService from './service.js';
 
 export default {
     components: {
@@ -145,27 +146,32 @@ export default {
                 {
                     icon: 'age.png',
                     holder: '年龄',
-                    title: ''
+                    title: '',
+                    key: 'age'
                 },
                 {
                     icon: 'add.png',
                     holder: '居住地',
-                    title: ''
+                    title: '',
+                    key: 'addr'
                 },
                 {
                     icon: 'workage.png',
-                    holder: '工作经验',
-                    title: ''
+                    holder: '工作年限',
+                    title: '',
+                    key: 'seniority'
                 },
                 {
                     icon: 'phone.png',
                     holder: '电话号码',
-                    title: ''
+                    title: '',
+                    key: 'tel'
                 },
                 {
                     icon: 'email.png',
                     holder: '邮箱号码',
-                    title: ''
+                    title: '',
+                    key: 'email'
                 }
             ],
             // 用户姓名和描述
@@ -185,7 +191,7 @@ export default {
         };
     },
     mounted() {
-        this.getUserInfo();
+        // this.getUserInfo();
     },
     created() {
         // 接收到保存的信息
@@ -203,24 +209,19 @@ export default {
             this.moduleTitleStyle = { background: color };
             this.$refs.topBg.style.backgroundColor = color;
         });
+        this.$hub.$on('saveResume', () => {
+            this.saveResume();
+        });
     },
+    computed: mapState({
+        resumeInfo: state => state.resumeEdit
+    }),
     methods: {
-        // // 增加skillBar的数量
-        // skillBarAddListener() {
-        //     this.skillBarArr.push(1);
-        // },
-
-        // // 添加教育项数量
-        // itemEducationAddListener() {
-        //     this.itemEducationArr.push(1);
-        // },
-
-        // // 添加经验数量
-        // itemExperienceAddListener() {
-        //     this.itemExperienceArr.push(1);
-        // },
         ...mapActions({
-            setResumeInfo: 'setResumeInfo'
+            setResumeInfo: 'setResumeInfo',
+            setDetailItem: 'setDetailItem',
+            setuser_name: 'setuser_name',
+            setuser_desc: 'setuser_desc'
         }),
         // 打开编辑基础信息框
         ShowDialogListener() {
@@ -231,6 +232,17 @@ export default {
                 skin: 'layui-layer-molv',
                 area: ['740px', '400px'],
                 content: this.$jquery('#idBaseDialog')
+            });
+        },
+        saveResume() {
+            const params = { ...this.resumeInfo };
+            params.user_name = this.userName.name;
+            params.user_desc = this.userName.desc;
+            // console.log(params);
+            resumeService.saveResume(params).then(data => {
+                if (data.status === 200) {
+                    window.alert('保存成功！');
+                }
             });
         },
         getUserInfo() {
@@ -245,7 +257,7 @@ export default {
         feichanghao`,
                 extra: `阿斯顿阿斯顿烦烦烦
         阿斯顿`,
-        experience: `三十多个项目`,
+                experience: `三十多个项目`,
                 target: `                                                   前端工程师                                 北京`
             };
             this.setResumeInfo(data);
@@ -255,6 +267,7 @@ export default {
             // 遍历赋值
             this.userInfoArr.forEach((info, index) => {
                 info.title = userInfo[index].name;
+                this.setDetailItem({ item: info.key, info: info.title });
             });
             // 姓名
             this.userName.name = userName.name;

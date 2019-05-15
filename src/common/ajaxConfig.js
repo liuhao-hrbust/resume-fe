@@ -5,6 +5,11 @@ const ajaxConfig = {
     },
     MODEL: {
         MODEL_LIST: '/users/model_list.do'
+    },
+    RESUME: {
+        SAVE_RESUME: '/users/saveResume.do',
+        GET_RESUME_INFO: '/users/getResumeInfo.do',
+        GET_RESUME_LIST: '/users/getResumeList.do'
     }
 };
 
