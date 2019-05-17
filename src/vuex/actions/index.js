@@ -49,8 +49,11 @@ const actions = {
     setDetailItem({ commit }, item, info) {
         commit(types.SET_DETAIL_ITEM, item, info);
     },
-    setResumeName({commit}, info) {
+    setResumeName({ commit }, info) {
         commit(types.SET_RESUME_NAME, info);
+    },
+    setResumeId({ commit }, info) {
+        commit(types.SET_RESUME_ID, info);
     }
 };
 

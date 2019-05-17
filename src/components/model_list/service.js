@@ -5,6 +5,9 @@ const post = ajaxService.post;
 const listService = {
     getModelList(params) {
         return post(CONFIG.MODEL.MODEL_LIST, params);
+    },
+    getResumeList(params) {
+        return post(CONFIG.RESUME.GET_RESUME_LIST, params);
     }
 };
 

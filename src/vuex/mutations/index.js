@@ -56,6 +56,9 @@ const mutations = {
     },
     [types.SET_RESUME_NAME](state, info) {
         state.resumeEdit.resumeName = info;
+    },
+    [types.SET_RESUME_ID](state, info) {
+        state.resumeEdit.resumeId = info;
     }
 };
 

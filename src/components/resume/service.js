@@ -6,8 +6,8 @@ const resumeService = {
     saveResume(params) {
         return post(CONFIG.RESUME.SAVE_RESUME, params);
     },
-    getResumeInfo(params) {
-        return post(CONFIG.RESUME.GET_RESUME_INFO, params);
+    getTargetResume(params) {
+        return post(CONFIG.RESUME.GET_TARGET_RESUME, params);
     }
 };
 

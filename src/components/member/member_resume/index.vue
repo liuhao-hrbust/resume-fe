@@ -6,7 +6,7 @@
           <li data-hash="resume" class="active">
             <a href="/member/myresume/#resume">
               在线简历（
-              <i id="web_size">40</i>）
+              <i id="web_size">{{resume_list.length}}</i>）
             </a>
           </li>
         </ul>
@@ -33,16 +33,13 @@
               <div class="wbd-member-resumeview">
                 <!-- 简历list -->
 
-                <div class="resumeview-panel" v-for="item in resume_list" :key="item.resume_name">
+                <div class="resumeview-panel" v-for="item in resume_list" :key="item.resumeName">
                   <div class="resumeview-showimg"></div>
                   <div class="resumeview-showcontent">
-                    <p class="resumeview-resumename">{{item.resume_name}}</p>
+                    <p class="resumeview-resumename">{{item.resumeName}}</p>
                     <span class="resumeview-reloadtime" data-time="20180612183545">{{item.c_time}}</span>
                     <div class="resumeview-btngroup">
-                      <a
-                        href="/cvresume/edit/?itemid=659&amp;resumeId=5567236"
-                        class="resumeview-edit"
-                      >编辑简历</a>
+                      <a @click="editResume(item.resumeId)">编辑简历</a>
                       <a
                         href="javascript:void(0);"
                         data-href="http://download.500d.me/cvresume/pdf_download/500d_5567236_659_2126255_20190412113610.pdf?downmsg=577cf4eb0a3380e3ac4f5fde714d3574"
@@ -62,12 +59,42 @@
 
 <script>
 import resumeService from './service';
+import { mapActions } from 'vuex';
 export default {
     methods: {
+        ...mapActions({
+            setResumeId: 'setResumeId',
+            setResumeInfo: 'setResumeInfo'
+        }),
+        // getTargetResume(resumeId) {
+        //     const params = {
+        //         resumeId
+        //     };
+        //     resumeService.getTargetResume(params).then(res => {
+        //         const resume = res.data.resume;
+        //         if (resume) {
+        //             this.setResumeInfo(resume);
+        //         }
+        //     });
+        // },
         getResumeList() {
-            resumeService.getResumeList().then(data => {
+            resumeService.getResumeList().then(res => {
+                this.resume_list = res.data.list;
                 // this.resume_list = data;
-                console.log(data);
+                console.log(res);
+            });
+        },
+        editResume(resumeId) {
+            this.setResumeId(resumeId);
+            const params = {
+                resumeId
+            };
+            resumeService.getTargetResume(params).then(res => {
+                const resume = res.data.resume;
+                if (resume) {
+                    this.setResumeInfo(resume);
+                }
+            this.$router.push('/edit/one');
             });
         }
     },
@@ -78,24 +105,7 @@ export default {
     components: {},
     data() {
         return {
-            resume_list: [
-                {
-                    resume_name: '我的简历01',
-                    c_time: '2019-9-9'
-                },
-                {
-                    resume_name: '我的简历02',
-                    c_time: '2019-9-9'
-                },
-                {
-                    resume_name: '我的简历03',
-                    c_time: '2019-9-9'
-                },
-                {
-                    resume_name: '我的简历04',
-                    c_time: '2019-9-9'
-                }
-            ]
+            resume_list: []
         };
     }
 };
@@ -213,10 +223,6 @@ export default {
         background-color: #fff;
         text-align: center;
         color: #00c091;
-
-        $:: before {
-          url('$/image/jl_member6.9.4_sp.png') no-repeat -143px -142px;
-        }
       }
     }
   }

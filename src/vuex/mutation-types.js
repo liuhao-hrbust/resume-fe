@@ -14,7 +14,8 @@ const types = {
     SET_RESUME_EXPERIENCE: 'SET_RESUME_EXPERIENCE', // 项目经验
     SET_RESUME_ITEM: 'SET_RESUME_ITEM', // 对传入的项进行更改
     SET_DETAIL_ITEM: 'SET_DETAIL_ITEM', // 修改小项
-    SET_RESUME_NAME: 'SET_RESUME_NAME' // 设置简历名称
+    SET_RESUME_NAME: 'SET_RESUME_NAME', // 设置简历名称
+    SET_RESUME_ID: 'SET_RESUME_ID'
 };
 
 export default types;

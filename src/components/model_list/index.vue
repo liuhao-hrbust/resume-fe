@@ -13,12 +13,9 @@
             </div>
             <div class="type_template_list" style="left: 0px;">
               <div class="template_card" v-for="item in list" :key="item.model_name">
-                <img
-                  :src="item.thumbnail_src"
-                  alt=""
-                >
+                <img :src="item.thumbnail_src" alt>
                 <div class="check_masking">
-                  <button>开始编辑</button>
+                  <button @click="editResume(item.model_name)">开始编辑</button>
                 </div>
               </div>
             </div>
@@ -31,6 +28,8 @@
 
 <script>
 import Service from './service';
+// import router from 'vue-router';
+import { mapActions } from 'vuex';
 export default {
     name: 'model_list',
     data() {
@@ -38,10 +37,25 @@ export default {
             list: []
         };
     },
-    mounted() {
-            Service.getModelList().then(res => {
-                this.list = res.data.list;
+    methods: {
+        ...mapActions({
+            setResumeId: 'setResumeId'
+        }),
+        editResume(name) {
+            let resumeId = 0;
+            Service.getResumeList().then(res => {
+                resumeId = res.data.list.length + 1;
+                this.setResumeId(resumeId);
+                this.$router.push({
+                    path: `edit/${name}`
+                });
             });
+        }
+    },
+    mounted() {
+        Service.getModelList().then(res => {
+            this.list = res.data.list;
+        });
     }
 };
 </script>
@@ -67,7 +81,6 @@ export default {
     background-color: #fff;
 
     .panel_template_content {
-    //   width: 1650px;
       padding-top: 40px;
       margin: auto;
 
@@ -174,25 +187,6 @@ export default {
                 background-color: #00c091;
                 border-radius: 5px;
                 font-size: 12px;
-
-                // &::after {
-                //   content: '';
-                //   -webkit-box-sizing: border-box;
-                //   -moz-box-sizing: border-box;
-                //   box-sizing: border-box;
-                //   position: absolute;
-                //   top: 16px;
-                //   left: 14px;
-                //   width: 25px;
-                //   height: 15px;
-                //   border: 5px solid #fff;
-                //   border-right: none;
-                //   border-top: none;
-                //   -webkit-transform: rotate(-45deg);
-                //   -moz-transform: rotate(-45deg);
-                //   -ms-transform: rotate(-45deg);
-                //   transform: rotate(-45deg);
-                // }
               }
             }
           }

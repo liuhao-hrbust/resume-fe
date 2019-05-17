@@ -1,7 +1,7 @@
 <template>
   <dash-child class="item">
     <img class="icon" :src=val(icon)>
-    <div class="text" contenteditable="true">
+    <div class="text">
       {{title}}
       <span v-if="title===''">{{holder}}</span>
     </div>

@@ -191,7 +191,10 @@ export default {
         };
     },
     mounted() {
-        // this.getUserInfo();
+        const self = this;
+        this.userInfoArr.forEach(function(item) {
+            item.title = self.resumeInfo[item.key];
+        });
     },
     created() {
         // 接收到保存的信息
@@ -214,7 +217,8 @@ export default {
         });
     },
     computed: mapState({
-        resumeInfo: state => state.resumeEdit
+        resumeInfo: state => state.resumeEdit,
+        resumeId: state => state.resumeEdit.resumeId
     }),
     methods: {
         ...mapActions({
@@ -233,6 +237,7 @@ export default {
                 area: ['740px', '400px'],
                 content: this.$jquery('#idBaseDialog')
             });
+            console.log(this.resumeInfo);
         },
         saveResume() {
             const params = { ...this.resumeInfo };
@@ -244,23 +249,6 @@ export default {
                     window.alert('保存成功！');
                 }
             });
-        },
-        getUserInfo() {
-            const data = {
-                user_name: '',
-                user_desc: '',
-                educationInfo: `哈理
-        计大
-        哈工大`,
-                self_val: `hao
-        henhao
-        feichanghao`,
-                extra: `阿斯顿阿斯顿烦烦烦
-        阿斯顿`,
-                experience: `三十多个项目`,
-                target: `                                                   前端工程师                                 北京`
-            };
-            this.setResumeInfo(data);
         },
         // 基础信息编辑保存
         dialogSaveListener(userInfo, userName) {
