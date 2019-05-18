@@ -8,6 +8,9 @@ const listService = {
     },
     getResumeList(params) {
         return post(CONFIG.RESUME.GET_RESUME_LIST, params);
+    },
+    createNewResumeId(params) {
+        return post(CONFIG.RESUME.CREATE_NEW_RESUME_ID, params);
     }
 };
 

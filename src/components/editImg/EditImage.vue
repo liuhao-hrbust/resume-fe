@@ -8,8 +8,13 @@
       <div class="img-wrapper" :class="{'circle':isCircle}">
         <img :src="imgSrc" alt="image" :class="{ circle: isCircle }" id="face">
       </div>
-      <form method="post" enctype="multipart/form-data">
-      <input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" @change="changeImage" name="file">
+      <form method="post" enctype="multipart/form-data" id="imageForm">
+        <input
+          type="file"
+          accept="image/gif, image/jpeg, image/jpg, image/png"
+          name="imageFile"
+          @change="changeImage"
+        >
       </form>
     </div>
   </div>
@@ -17,6 +22,7 @@
 
 <script type="text/ecmascript-6" scoped>
 import jquery from '@/common/util/jquery';
+import '@/common/util/jquery.form.min';
 
 export default {
     name: 'editImg',
@@ -62,19 +68,25 @@ export default {
             this.isActive = false;
         },
         faceUpload(file) {
-            var faceForm = new FormData();
-            faceForm.append('face', file);
-            jquery.ajax({
+            const form = jquery('#imageForm');
+            // var faceForm = new FormData();
+            // faceForm.append('face', file);
+            // faceForm.append('id', 100);
+            const options = {
+                xhrFields: {
+                    withCredentials: true
+                },
                 type: 'post',
                 url: 'http://127.0.0.1:3000/users/uploadHead.do',
-                data: faceForm,
-                async: true, // 是否异步
-                processData: false,
-                contentType: false,
+                // data: faceForm,
+                // async: true, // 是否异步
+                // processData: false,
+                // contentType: false,
                 success: function() {
                     console.log('ok');
                 }
-            });
+            };
+            form.ajaxSubmit(options);
         }
     }
 };

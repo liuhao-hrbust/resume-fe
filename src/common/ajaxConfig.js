@@ -10,7 +10,8 @@ const ajaxConfig = {
         SAVE_RESUME: '/users/saveResume.do',
         GET_RESUME_INFO: '/users/getResumeInfo.do',
         GET_RESUME_LIST: '/users/getResumeList.do',
-        GET_TARGET_RESUME: '/users/getTargetResume.do'
+        GET_TARGET_RESUME: '/users/getTargetResume.do',
+        CREATE_NEW_RESUME_ID: '/users/createNewResumeId.do'
     }
 };
 

@@ -81,7 +81,7 @@ export default {
             resumeService.getResumeList().then(res => {
                 this.resume_list = res.data.list;
                 // this.resume_list = data;
-                console.log(res);
+                // console.log(res);
             });
         },
         editResume(resumeId) {

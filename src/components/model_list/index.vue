@@ -46,8 +46,14 @@ export default {
             Service.getResumeList().then(res => {
                 resumeId = res.data.list.length + 1;
                 this.setResumeId(resumeId);
-                this.$router.push({
-                    path: `edit/${name}`
+                const params = {
+                    resumeId
+                };
+                const self = this;
+                Service.createNewResumeId(params).then(() => {
+                    self.$router.push({
+                        path: `edit/${name}`
+                    });
                 });
             });
         }
