@@ -23,6 +23,7 @@
 <script type="text/ecmascript-6" scoped>
 import jquery from '@/common/util/jquery';
 import '@/common/util/jquery.form.min';
+import { mapState } from 'vuex';
 
 export default {
     name: 'editImg',
@@ -35,10 +36,10 @@ export default {
             type: String,
             default: '36'
         },
-        src: {
-            type: String,
-            default: require('@/assets/logo.png')
-        },
+        // src: {
+        //     type: String,
+        //     default: require('@/assets/logo.png')
+        // },
         isCircle: {
             type: Boolean,
             default: true
@@ -50,6 +51,12 @@ export default {
             isActive: false
         };
     },
+    computed: mapState({
+        src: state => state.resumeEdit.head_path
+    }),
+    // mounted() {
+    //     console.log(this.src);
+    // },
     methods: {
         changeImage: function(evt) {
             let _this = this;

@@ -24,7 +24,8 @@ const state = {
         seniority: '',
         tel: '',
         email: '',
-        resumeId: 0
+        resumeId: 0,
+        head_path: ''
     }
 };
 
