@@ -11,10 +11,10 @@
       </a>
     </div>
     <ul class="manager">
-      <li class="manager-item" @click="templateSwitch">
+      <!-- <li class="manager-item" @click="templateSwitch">
         <i class="icon model"></i>
         <a class="text" href="javascript:void(0);">模板切换</a>
-      </li>
+      </li> -->
       <li class="manager-item" @click="styleSetting">
         <i class="icon style"></i>
         <a class="text" href="javascript:void(0);">风格设置</a>

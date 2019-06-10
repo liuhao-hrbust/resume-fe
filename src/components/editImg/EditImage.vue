@@ -47,7 +47,7 @@ export default {
     },
     data() {
         return {
-            imgSrc: this.src,
+            imgSrc: this.src ? this.src : require('@/assets/logo.png'),
             isActive: false
         };
     },

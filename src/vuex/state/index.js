@@ -19,7 +19,7 @@ const state = {
         extra: ``,
         experience: ``,
         target: ``,
-        age: '2',
+        age: '',
         addr: '',
         seniority: '',
         tel: '',

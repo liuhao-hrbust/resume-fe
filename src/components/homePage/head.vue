@@ -59,13 +59,7 @@
           <router-link to="/models">模板列表</router-link>
         </li>
         <li>
-          <router-link to="/">求职行家</router-link>
-        </li>
-        <li>
-          <router-link to="/">PPT在线制作</router-link>
-        </li>
-        <li>
-          <a href>···</a>
+          <!-- <a href>···</a> -->
           <div class="jl-ej-jl-nav">
             <ul>
               <li>
