@@ -30,6 +30,7 @@ export default {
   .aside {
     background: #00c091;
     z-index: 9999;
+    margin-top: 60px;
   }
 
   .edit {

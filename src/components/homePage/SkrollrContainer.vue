@@ -6,7 +6,7 @@
           <h1>备受好评的求职利器，HR专家联名推荐</h1>
         </div>
         <div class="jl-index-startmake">
-          <router-link to="/edit" class="free-resume-btn 500dtongji">
+          <router-link to="/models" class="free-resume-btn 500dtongji">
             <i></i>免费制作简历
           </router-link>
         </div>

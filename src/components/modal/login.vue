@@ -52,12 +52,16 @@ export default {
                     this.user_name = data.user_name;
                     this.user_password = data.user_password;
                     if (data.code === 0) {
-                        this.toggleLogin(false);
-                        this.toggleModal(false);
-                        this.setUserName(params.user_name);
-                        const storage = window.localStorage;
-                        storage.user_name = params.user_name;
-                        this.toggleIsLogin(true);
+                        if (data.status === '00002') {
+                            window.alert(data.error);
+                        } else {
+                            this.toggleLogin(false);
+                            this.toggleModal(false);
+                            this.setUserName(params.user_name);
+                            const storage = window.localStorage;
+                            storage.user_name = params.user_name;
+                            this.toggleIsLogin(true);
+                        }
                     }
                 },
                 err => {

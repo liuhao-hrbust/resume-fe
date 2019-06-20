@@ -52,9 +52,9 @@
     </div>
     <div class="jl-nav">
       <ul>
-        <li>
+        <!-- <li>
           <router-link to="/">在线制作</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link to="/models">模板列表</router-link>
         </li>

@@ -52,12 +52,14 @@ vueRouter.beforeEach(function(to, from, next) {
     Store.commit('TOGGLE_SHOW_MODAL', false);
     Store.commit('TOGGLE_ISLOGIN', !!window.localStorage.user_name);
     const nextRoute = ['edit', 'member'];
-    if (nextRoute.indexOf(to.name) >= 0) {
+    if (
+        nextRoute.some(item => to.path.includes(item)) &&
+        !window.localStorage.user_name
+    ) {
         // 未登录
-        if (!window.localStorage.user_name) {
-            Store.commit('TOGGLE_SHOW_MODAL', true);
-            Store.commit('TOGGLE_SHOW_REGISTER', true);
-        }
+        console.log(12);
+        Store.commit('TOGGLE_SHOW_MODAL', true);
+        Store.commit('TOGGLE_SHOW_LOGIN', true);
     } else {
         next();
     }

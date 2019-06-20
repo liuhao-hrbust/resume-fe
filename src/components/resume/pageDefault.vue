@@ -83,7 +83,7 @@
     <!--自定义模块-->
     <dash-parent>
       <module-item-copy
-        :title="'自定义模块'"
+        :title="'实习经验'"
         :lkey="userInfoo.extra"
         :moduleTitleStyle="moduleTitleStyle"
         :moduleTriangleStyle="moduleTriangleStyle"

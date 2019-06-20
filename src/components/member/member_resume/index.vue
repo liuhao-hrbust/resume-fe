@@ -14,11 +14,11 @@
       <div class="wbd-member-resumecontent">
         <ul class="wbd-member-resumecontent-center clearfix">
           <li class="wbd-member-contentresume" style="display: list-item;">
-            <a
+            <!-- <a
               href="javascript:void(0);"
               class="wbd-member-createresume open_create_resume_panel 500dtongji"
               data-_track="PC-CV6.9.4-个人中心-首页-在线简历模块-右侧-新建简历"
-            >新建简历</a>
+            >新建简历</a> -->
             <a href="javascript:void(0);" class="resumeview-prev disable" style="display: inline;"></a>
             <a href="javascript:void(0);" class="resumeview-next" style="display: inline;"></a>
             <div class="wbd-member-viewoverflow">
@@ -40,11 +40,11 @@
                     <span class="resumeview-reloadtime" data-time="20180612183545">{{item.c_time}}</span>
                     <div class="resumeview-btngroup">
                       <a @click="editResume(item.resumeId)">编辑简历</a>
-                      <a
+                      <!-- <a
                         href="javascript:void(0);"
                         data-href="http://download.500d.me/cvresume/pdf_download/500d_5567236_659_2126255_20190412113610.pdf?downmsg=577cf4eb0a3380e3ac4f5fde714d3574"
                         class="resumeview-download down_btn"
-                      >下载简历</a>
+                      >下载简历</a> -->
                     </div>
                   </div>
                 </div>

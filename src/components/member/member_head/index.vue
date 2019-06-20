@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             user_info: {
-                created_time: '2019-19-19'
+                created_time: '2019-5-19'
             }
         };
     },
