@@ -8,6 +8,7 @@ import SkrollrContainer from '@/components/homePage/SkrollrContainer';
 import Member from '@/components/member/index';
 import ModelList from '@/components/model_list/index';
 import editResume from '@/components/editResume/editResume';
+import Account from '@/components/member/account';
 // import { Store } from '_vuex@3.1.0@vuex';
 // import Modal from '@/components/modal/index';
 
@@ -36,6 +37,10 @@ const vueRouter = new Router({
                     component: pageDefault
                 }
             ]
+        },
+        {
+            path: '/account',
+            component: Account
         },
         {
             path: '/member',

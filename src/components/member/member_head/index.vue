@@ -8,7 +8,7 @@
           </div>
           <p class="memberhead-name">{{user_name}}</p>
           <div class="memberhead-vipinfo">
-            <a href="/member/set/" class="memberhead-config 500dtongji">账号设置</a>
+            <router-link to="/account" class="jl-tx-img 500dtongji">账号设置</router-link>
           </div>
 
           <div class="memberhead-date">注册时间：{{user_info.created_time}}</div>

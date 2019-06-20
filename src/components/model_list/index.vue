@@ -39,7 +39,8 @@ export default {
     },
     methods: {
         ...mapActions({
-            setResumeId: 'setResumeId'
+            setResumeId: 'setResumeId',
+            setResumeInfo: 'setResumeInfo'
         }),
         editResume(name) {
             let resumeId = 0;
@@ -54,7 +55,26 @@ export default {
                 };
                 Service.createNewResumeId(params).then(
                     () => {
-                        console.log('123');
+                        // console.log('123');
+                        const resume = {
+                            resumeName: '',
+                            user_name: '',
+                            user_desc: '',
+                            educationInfo: ``,
+                            self_val: ``,
+                            extra: ``,
+                            experience: ``,
+                            target: ``,
+                            age: '',
+                            addr: '',
+                            seniority: '',
+                            tel: '',
+                            email: '',
+                            resumeId: 0,
+                            head_path: ''
+                        };
+                        this.setResumeInfo(resume);
+
                         self.$router.push('/edit/' + name);
                     },
                     err => {

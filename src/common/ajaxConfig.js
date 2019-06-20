@@ -1,7 +1,8 @@
 const ajaxConfig = {
     USER: {
         LOGIN: '/users/login.do',
-        REGISTER: '/users/register.do'
+        REGISTER: '/users/register.do',
+        CHANGE_ACCOUNT: '/users/changeAccount.do'
     },
     MODEL: {
         MODEL_LIST: '/users/model_list.do'
